@@ -1,0 +1,47 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-sm-4"> 
+           
+           <div *ngIf="selectedHero">
+                <h2>{{ selectedHero.name }}'s Details:</h2>
+                <div class="form-group">
+                    <label for="id">ID: </label>
+                    <input [(ngModel)]="selectedHero.id" placeholder="ID:" class="form-control" id="id">
+
+                    <label for="name">Name: </label>
+                    <input [(ngModel)]="selectedHero.name" placeholder="Name" class="form-control" id="name">
+
+
+
+                </div>
+           </div>
+           
+            
+        </div>
+        <div class="col-12 col-sm-8">
+            <div class="card">
+                <div class="card-header">
+                    Heroes
+                </div>
+                
+                           
+                <ul class="list-group heroes">
+                    <li 
+                      class="list-group-item" 
+                      *ngFor="let hero of heroes"
+                      (click)="onSelect(hero)"
+                      [class.selected]="selectedHero === hero"  
+                    >
+                        {{hero.name}}
+
+                        <span class="badge badge-danger float-right">
+                           ID:  {{hero.id}}
+                        </span>
+                    </li>
+                </ul>
+            
+            
+            </div>
+        </div>
+    </div>
+</div>
